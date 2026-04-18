@@ -10,6 +10,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800",
     rating: { rate: 4.8, count: 124 },
     brand: "AudioMax",
+    isNew: true,
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800",
     rating: { rate: 4.9, count: 52 },
     brand: "VisionTech",
+    isNew: true,
   },
   {
     id: 4,
@@ -50,6 +52,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800",
     rating: { rate: 4.6, count: 162 },
     brand: "NobleLeather",
+    isNew: true,
   },
   {
     id: 6,
@@ -80,6 +83,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800",
     rating: { rate: 4.4, count: 64 },
     brand: "Summit",
+    isNew: true,
   },
   {
     id: 9,
@@ -100,6 +104,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=800",
     rating: { rate: 4.7, count: 31 },
     brand: "CreatorX",
+    isNew: true,
   },
   {
     id: 11,

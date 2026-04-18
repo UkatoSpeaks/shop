@@ -10,4 +10,5 @@ export interface Product {
     count: number;
   };
   brand: string;
+  isNew?: boolean;
 }

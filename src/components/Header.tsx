@@ -39,15 +39,20 @@ export default function Header() {
 
           {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
-            {["Collection", "New Arrivals", "Design", "About"].map((item) => (
-              <a 
-                key={item} 
-                href="#" 
+            {[
+              { label: "Collection", href: "/" },
+              { label: "New Arrivals", href: "/new-arrivals" },
+              { label: "Design", href: "/design" },
+              { label: "About", href: "/about" },
+            ].map((item) => (
+              <Link 
+                key={item.label} 
+                href={item.href} 
                 className="text-[13px] font-bold text-gray-500 hover:text-gray-900 uppercase tracking-widest transition-colors relative group"
               >
-                {item}
+                {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </nav>
 
