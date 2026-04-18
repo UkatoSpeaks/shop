@@ -68,9 +68,11 @@ export default function Header() {
           {/* Right Icons */}
           <div className="flex items-center gap-4 sm:gap-6">
             <div className="relative group">
-              <button className="p-3 text-gray-500 hover:text-gray-900 transition-all duration-300">
-                <ShoppingCart size={22} className="group-hover:scale-110 transition-transform" />
-              </button>
+              <Link href="/cart">
+                <button className="p-3 text-gray-500 hover:text-gray-900 transition-all duration-300">
+                  <ShoppingCart size={22} className="group-hover:scale-110 transition-transform" />
+                </button>
+              </Link>
               {totalItems > 0 && (
                 <span className="absolute top-1 right-1 w-5 h-5 bg-gray-900 border-2 border-white text-white text-[9px] font-black flex items-center justify-center rounded-full">
                   {totalItems}

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Star, ShoppingCart } from "lucide-react";
 import { Product } from "../types/product";
 import { useCartStore } from "../store/cartStore";
@@ -19,7 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group bg-white border border-gray-100 rounded-[2.5rem] overflow-hidden hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-all duration-500 transform hover:-translate-y-2 flex flex-col h-full">
       {/* Image Container */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-gray-50/50">
+      <Link href={`/product/${product.id}`} className="relative aspect-[4/5] overflow-hidden bg-gray-50/50 block">
         <Image
           src={imageError ? fallbackImage : product.image}
           alt={product.title}
@@ -36,28 +37,30 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.category}
           </span>
         </div>
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
         <div className="mb-3">
-          <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1.5 opacity-70">
+          <p className="text-[10px] font-black text-gray-900/50 uppercase tracking-[0.2em] mb-1.5 opacity-70">
             {product.brand}
           </p>
-          <h3 className="text-gray-900 font-bold text-lg leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-            {product.title}
-          </h3>
+          <Link href={`/product/${product.id}`} className="block group/title">
+            <h3 className="text-gray-900 font-bold text-lg leading-tight group-hover/title:text-gray-600 transition-colors line-clamp-2">
+              {product.title}
+            </h3>
+          </Link>
         </div>
 
         {/* Rating */}
         <div className="flex items-center gap-1.5 mb-6">
-          <div className="flex bg-yellow-50 px-2 py-0.5 rounded-lg border border-yellow-100">
+          <div className="flex bg-gray-50 px-2 py-0.5 rounded-lg border border-gray-100">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
                 className={`w-3 h-3 ${
                   i < Math.floor(product.rating.rate)
-                    ? "fill-yellow-400 text-yellow-400"
+                    ? "fill-gray-950 text-gray-950"
                     : "text-gray-200"
                 }`}
               />
@@ -79,7 +82,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <button
             onClick={() => addToCart(product)}
-            className="flex items-center justify-center w-12 h-12 bg-gray-950 text-white rounded-[1.25rem] hover:bg-blue-600 hover:scale-110 active:scale-90 transition-all shadow-xl shadow-gray-200 group/btn"
+            className="flex items-center justify-center w-12 h-12 bg-gray-950 text-white rounded-[1.25rem] hover:bg-gray-800 hover:scale-110 active:scale-90 transition-all shadow-xl shadow-gray-200 group/btn"
           >
             <ShoppingCart className="w-5 h-5 group-hover/btn:-rotate-12 transition-transform" />
           </button>
