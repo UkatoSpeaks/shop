@@ -7,30 +7,42 @@ export default function Home() {
   return (
     <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       {/* Hero Section */}
-      <section className="mb-20">
-        <div className="relative overflow-hidden rounded-[3rem] bg-gray-900 px-8 py-20 md:px-20 md:py-32 shadow-2xl">
-          {/* Animated Background Blobs */}
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[500px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full animate-pulse" />
-          <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-[500px] h-[500px] bg-indigo-600/20 blur-[120px] rounded-full animate-pulse delay-700" />
-          
-          <div className="relative z-10 max-w-2xl">
-            <span className="inline-block px-4 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-6 animate-slide-up">
-              New Collection 2026
-            </span>
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter mb-8 animate-slide-up delay-100">
-              ELITE <br/>
-              <span className="text-blue-500">SELECTIONS.</span>
-            </h1>
-            <p className="text-lg text-gray-400 font-medium mb-12 max-w-md animate-slide-up delay-200">
-              Discover our curated collection of high-end essentials designed for the modern lifestyle.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-slide-up delay-300">
-              <button className="px-8 py-4 bg-white text-gray-900 font-black rounded-2xl hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-white/5">
-                Shop Now
-              </button>
-              <button className="px-8 py-4 bg-white/10 text-white font-black rounded-2xl border border-white/10 hover:bg-white/20 transition-all">
-                Learn More
-              </button>
+      <section className="mb-24">
+        <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[4rem] bg-[#F8F5F2] flex items-center shadow-sm">
+          {/* Content Layer */}
+          <div className="relative z-10 w-full grid md:grid-cols-2 items-center h-full">
+            <div className="px-12 md:px-20 py-16">
+              <span className="flex items-center gap-2 mb-8 animate-slide-up">
+                <span className="w-10 h-px bg-gray-900" />
+                <span className="text-[11px] font-bold text-gray-900 uppercase tracking-[0.4em]">
+                  Seasonal Artifacts
+                </span>
+              </span>
+              <h1 className="text-6xl md:text-8xl font-black text-gray-900 leading-[0.85] tracking-tighter mb-10 animate-slide-up delay-100">
+                TIMELESS <br/>
+                <span className="italic font-light serif text-gray-600">Essence.</span>
+              </h1>
+              <p className="text-lg text-gray-600 font-medium mb-12 max-w-sm leading-relaxed animate-slide-up delay-200">
+                Curating objects of exceptional quality and minimalist design for the refined individual.
+              </p>
+              <div className="flex items-center gap-8 animate-slide-up delay-300">
+                <button className="px-10 py-5 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 active:scale-95 shadow-2xl shadow-gray-900/20">
+                  Explore Collection
+                </button>
+                <button className="text-[13px] font-black text-gray-900 uppercase tracking-widest border-b-2 border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-all">
+                  Our Story
+                </button>
+              </div>
+            </div>
+            
+            {/* Image Side */}
+            <div className="hidden md:block h-full relative group">
+              <img 
+                src="/luxury_ecom_hero_vibe_image_1776517610943.png" 
+                alt="Luxury Lifestyle"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F8F5F2] via-transparent to-transparent" />
             </div>
           </div>
         </div>
