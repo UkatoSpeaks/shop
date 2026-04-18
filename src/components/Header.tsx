@@ -84,9 +84,11 @@ export default function Header() {
                 </span>
               )}
             </div>
-            <button className="p-3 text-gray-500 hover:text-gray-900 transition-all group">
-              <User size={22} className="group-hover:scale-110 transition-transform" />
-            </button>
+            <Link href="/profile">
+              <button className="p-3 text-gray-500 hover:text-gray-900 transition-all group">
+                <User size={22} className="group-hover:scale-110 transition-transform" />
+              </button>
+            </Link>
             <button className="inline-flex lg:hidden p-3 text-gray-900">
               <Menu size={22} />
             </button>
