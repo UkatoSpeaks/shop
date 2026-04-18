@@ -38,7 +38,7 @@ export default function Home() {
             {/* Image Side */}
             <div className="hidden md:block h-full relative group">
               <img 
-                src="/luxury_ecom_hero_vibe_image_1776517610943.png" 
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200" 
                 alt="Luxury Lifestyle"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
               />
