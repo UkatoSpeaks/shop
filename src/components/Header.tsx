@@ -20,7 +20,7 @@ export default function Header() {
     } else {
       params.delete("q");
     }
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
   };
 
   return (

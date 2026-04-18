@@ -48,7 +48,7 @@ export default function FiltersSidebar() {
       params.delete("price");
     }
 
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
   };
 
   const handleCategoryChange = (category: string) => {
@@ -69,7 +69,7 @@ export default function FiltersSidebar() {
     setSelectedCategories([]);
     setMinPrice("");
     setMaxPrice("");
-    router.push("/");
+    router.push("/", { scroll: false });
   };
 
   return (
