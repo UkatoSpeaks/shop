@@ -5,15 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { products } from "../../../data/products";
-import { useCartStore } from "../../../store/cartStore";
-import { Star, ShoppingCart, ArrowLeft, Plus, Minus, ShieldCheck, Truck, RefreshCcw } from "lucide-react";
+import { useCartStore, useWishlistStore } from "../../../store/cartStore";
+import { Star, ShoppingCart, ArrowLeft, Plus, Minus, ShieldCheck, Truck, RefreshCcw, Heart } from "lucide-react";
 import ProductCard from "../../../components/ProductCard";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const addToCart = useCartStore((state) => state.addToCart);
+  const { toggleWishlist, isInWishlist } = useWishlistStore();
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState("description");
+  const [isAdded, setIsAdded] = useState(false);
 
   const product = products.find((p) => p.id === Number(id));
 
@@ -34,6 +35,14 @@ export default function ProductDetail() {
   const recommendations = products
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 3);
+
+  const handleAddToBag = () => {
+    addToCart(product, quantity);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
+  const isWishlisted = isInWishlist(product.id);
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 animate-fade-in">
@@ -112,16 +121,31 @@ export default function ProductDetail() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
-                onClick={() => {
-                  for(let i=0; i<quantity; i++) addToCart(product);
-                }}
-                className="flex-1 py-6 bg-gray-900 text-white font-black rounded-full hover:bg-gray-800 transition-all transform active:scale-95 shadow-2xl shadow-gray-900/20 flex items-center justify-center gap-3"
+                onClick={handleAddToBag}
+                disabled={isAdded}
+                className={`flex-1 py-6 font-black rounded-full transition-all transform active:scale-95 shadow-2xl flex items-center justify-center gap-3 ${
+                  isAdded ? "bg-green-600 text-white" : "bg-gray-900 text-white hover:bg-gray-800 shadow-gray-900/20"
+                }`}
               >
-                <ShoppingCart size={20} />
-                Add to Bag
+                {isAdded ? (
+                  <>Added to Bag!</>
+                ) : (
+                  <>
+                    <ShoppingCart size={20} />
+                    Add to Bag
+                  </>
+                )}
               </button>
-              <button className="px-10 py-6 bg-transparent border-2 border-gray-100 text-gray-900 font-black rounded-full hover:bg-gray-50 transition-all">
-                Wishlist
+              <button 
+                onClick={() => toggleWishlist(product)}
+                className={`px-10 py-6 border-2 font-black rounded-full transition-all flex items-center justify-center gap-2 ${
+                  isWishlisted 
+                    ? "bg-red-50 border-red-100 text-red-500" 
+                    : "bg-transparent border-gray-100 text-gray-900 hover:bg-gray-50"
+                }`}
+              >
+                <Heart size={20} className={isWishlisted ? "fill-current" : ""} />
+                {isWishlisted ? "Wishlisted" : "Wishlist"}
               </button>
             </div>
           </div>

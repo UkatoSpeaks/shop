@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShoppingCart, User, Search, Menu } from "lucide-react";
-import { useCartStore } from "../store/cartStore";
+import { ShoppingCart, User, Search, Menu, Heart } from "lucide-react";
+import { useCartStore, useWishlistStore } from "../store/cartStore";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Header() {
   const totalItems = useCartStore((state) => state.totalItems());
+  const wishlistItems = useWishlistStore((state) => state.items.length);
   const [search, setSearch] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -72,6 +73,21 @@ export default function Header() {
 
           {/* Right Icons */}
           <div className="flex items-center gap-4 sm:gap-6">
+            {/* Wishlist */}
+            <div className="relative group hidden sm:block">
+              <Link href="/profile">
+                <button className="p-3 text-gray-500 hover:text-gray-900 transition-all duration-300">
+                  <Heart size={22} className="group-hover:scale-110 transition-transform" />
+                </button>
+              </Link>
+              {wishlistItems > 0 && (
+                <span className="absolute top-1 right-1 w-5 h-5 bg-red-500 border-2 border-white text-white text-[9px] font-black flex items-center justify-center rounded-full">
+                  {wishlistItems}
+                </span>
+              )}
+            </div>
+
+            {/* Cart */}
             <div className="relative group">
               <Link href="/cart">
                 <button className="p-3 text-gray-500 hover:text-gray-900 transition-all duration-300">
@@ -84,6 +100,7 @@ export default function Header() {
                 </span>
               )}
             </div>
+
             <Link href="/profile">
               <button className="p-3 text-gray-500 hover:text-gray-900 transition-all group">
                 <User size={22} className="group-hover:scale-110 transition-transform" />
