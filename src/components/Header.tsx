@@ -10,8 +10,13 @@ export default function Header() {
   const totalItems = useCartStore((state) => state.totalItems());
   const wishlistItems = useWishlistStore((state) => state.items.length);
   const [search, setSearch] = useState("");
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,7 +85,7 @@ export default function Header() {
                   <Heart size={22} className="group-hover:scale-110 transition-transform" />
                 </button>
               </Link>
-              {wishlistItems > 0 && (
+              {mounted && wishlistItems > 0 && (
                 <span className="absolute top-1 right-1 w-5 h-5 bg-red-500 border-2 border-white text-white text-[9px] font-black flex items-center justify-center rounded-full">
                   {wishlistItems}
                 </span>
@@ -94,7 +99,7 @@ export default function Header() {
                   <ShoppingCart size={22} className="group-hover:scale-110 transition-transform" />
                 </button>
               </Link>
-              {totalItems > 0 && (
+              {mounted && totalItems > 0 && (
                 <span className="absolute top-1 right-1 w-5 h-5 bg-gray-900 border-2 border-white text-white text-[9px] font-black flex items-center justify-center rounded-full">
                   {totalItems}
                 </span>
