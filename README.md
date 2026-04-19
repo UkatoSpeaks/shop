@@ -3,7 +3,7 @@
 A high-fidelity, responsive e-commerce application built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**. This project focuses on a "Minimalist Luxury" aesthetic, providing a seamless and premium shopping experience.
 
 ## 🚀 Live Deployment
-**Live URL**: [Pending Vercel Deployment] (Please replace with your Vercel URL after deployment)
+**Live URL**: [https://shop-mu.vercel.app/](https://shop-mu.vercel.app/)
 
 ---
 
